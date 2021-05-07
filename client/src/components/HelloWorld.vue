@@ -1,7 +1,15 @@
 <template>
   <div>
+    {{joke.setup}}
     <b-button>Button</b-button>
+    {{joke.punchline}}
     <Iframe>{{gif}}</Iframe>
+    <b-embed
+        type="iframe"
+        aspect="16by9"
+        :src=gif
+        allowfullscreen
+    ></b-embed>
   </div>
 </template>
 
