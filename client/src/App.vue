@@ -24,4 +24,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+body{
+  background-image: url("https://wallpaperaccess.com/download/joker-cartoon-82901");
+  backface-visibility: visible;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
 </style>

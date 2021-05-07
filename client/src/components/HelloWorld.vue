@@ -1,26 +1,33 @@
 <template>
-  <div>
-    <h1>This is a random generated page with a random joke and a random gif. Enjoy!</h1>
-    <div>
-      {{ joke.setup }}
-      <div>
-        <b-button @click="onClickPunchLine">See punchline</b-button>
-      </div>
-      <div>
-        {{ punchline }}
-      </div>
-      <div>Do you want another random joke?
-        <b-button @click="onClickRandomJoke">Reroll joke</b-button>
-      </div>
+  <div class="font">
+    <div class="color">
+      <b-button pill variant="light" b-button size="lg" @click="onClickStart" :pressed.sync="myToggle" v-b-modal.modal-1>
+        Laugh AHAHAHAHAHAHAHAHAHAHA
+      </b-button>
+    </div>
+    <div v-if="myToglle">
+      <h1>This is a random generated page with a random joke and a random gif. Enjoy!</h1>
       <b-embed
-          height="500"
-          width="500"
+          height="300"
+          width="800"
           type="iframe"
-          aspect="1by1"
+          aspect="16by9"
           :src=gif
           allowfullscreen
       ></b-embed>
-      <b-button @click="onClickRandomGif">ReRandomGif</b-button>
+      <b-button pill variant="light" @click="onClickRandomGif">Reroll gif</b-button>
+      <div class="text_color1">
+        {{ joke.setup }}
+        <div>
+          <b-button pill variant="light" @click="onClickPunchLine">See punchline</b-button>
+        </div>
+        <div class="text_color2">
+          {{ punchline }}
+        </div>
+      </div>
+      <div class="font">
+        <b-button pill variant="light" @click="onClickRandomJoke">Reroll joke</b-button>
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +44,8 @@ export default {
       joke: Object,
       gif: Object,
       myIframe: null,
-      punchline: null
+      punchline: null,
+      myToglle: false
     }
   },
   mounted: function () {
@@ -81,7 +89,7 @@ export default {
       this.punchline = this.joke.punchline;
 
     },
-    onClickRandomJoke(){
+    onClickRandomJoke() {
       fetch('https://official-joke-api.appspot.com/random_joke', {
         method: 'get'
       })
@@ -91,6 +99,9 @@ export default {
           .then((jsonData) => {
             this.joke = jsonData
           })
+    },
+    onClickStart() {
+      this.myToglle = true;
     }
   }
 }
@@ -114,5 +125,32 @@ li {
 
 a {
   color: #42b983;
+}
+
+.font {
+  font-family: 'Courier New', monospace;
+  color: #bacbe6;
+}
+
+.color {
+  color: #6f42c1;
+}
+
+.text_color1 {
+  font-weight: bold;
+  font-style: oblique;
+  font-size: xx-large;
+  color: red;
+}
+
+.text_color2 {
+  color: lime;
+  font-weight: bold;
+  font-style: oblique;
+  font-size: xx-large;
+}
+
+body {
+  background-image: url("https://wallpaperaccess.com/download/joker-cartoon-82901");
 }
 </style>
